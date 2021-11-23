@@ -1,4 +1,3 @@
-const { write } = require('fs');
 const gm = require('gm');
 const {workerData, parentPort} = require('worker_threads');
 
