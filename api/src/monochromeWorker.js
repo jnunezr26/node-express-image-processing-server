@@ -3,7 +3,7 @@ const {workerData, parentPort} = require('worker_threads');
 
 gm(workerData.source)
 .monochrome(100,100)
-write.(workerData.destination, (error) =>{
+.write(workerData.destination, (error) =>{
     if (error) throw error;
 
     parentPort.postMessage({monochrome: true})
