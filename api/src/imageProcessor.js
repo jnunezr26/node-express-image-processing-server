@@ -24,6 +24,12 @@ if (isMainThread){
                 destination: resizedDestination,
             },
         });
+        const monochromeWorker = new Worker(pathToMonochromeWorker, {
+            workerData: {
+                source: sourcePath,
+                destination: monochromeDestination,
+            },
+        });
 
         resizeWorker.on('message', (message) =>{
             resizeWorkerFinished = true;
