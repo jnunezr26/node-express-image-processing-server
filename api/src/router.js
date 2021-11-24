@@ -1,8 +1,6 @@
 const {Router} = require('express');
 const multer = require('multer');
-const path = require('path');
 const imageProcessor = require('./imageProcessor');
-const photoPath = path.resolve(__dirname, '../../client/photo-viewer.html');
 
 const router =Router();
 
@@ -27,7 +25,6 @@ const fileFilter = (request,file, callback) => {
 const upload = multer({
     fileFilter,
     storage,
-
 });
 
 router.post('/upload',upload.single('photo'), async(request, response) =>{
@@ -40,9 +37,7 @@ router.post('/upload',upload.single('photo'), async(request, response) =>{
     }
 
     return response.status(201).json({succes: true})
-})
-router.get('/photo-viewer', (request, response) =>{
-    response.sendFile(photoPath);
 });
+
 
 module.exports = router;
